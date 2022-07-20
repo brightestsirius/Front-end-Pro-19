@@ -1,4 +1,19 @@
+// 🔴🟠🟡🟢🔵🟣
+
+// inline conditions
+// ternary operator
+// isNaN()
+// iterate over the string
+
+// break; continue
+
+// factorial
+
+// pure number
+// %
+
 // Array
+
 // Array methods
     // push
     // pop
@@ -11,6 +26,9 @@
     // join
     // split
     // indexOf
+
 // Function
+
 // Lexical environment
+
 // Scope
