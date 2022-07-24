@@ -19,6 +19,8 @@
 
 // Math.random()
 
+// Copy of array
+
 // Array methods
 //     push
 //     pop
@@ -31,3 +33,5 @@
 //     join
 //     split
 //     indexOf
+
+// Two dimensional array
