@@ -1,287 +1,215 @@
-const herbivores = [
+// class
+
+// let Yana = {
+//     name: `Yana`,
+//     surname: `Shevchenko`,
+//     yearOfBirth: 2000,
+//     country: `Poland`
+// };
+
+// class Child{
+//     constructor(obj){
+//         // for(let key in obj){
+//         //     this[key] = obj[key];
+//         // }
+//         Object.assign(this, obj);
+
+//         this.setAge();
+//         this.setFullName();
+//     }
+
+//     setFullName(){
+//         if(this.name && this.surname)
+//             this.fullName = `${this.name} ${this.surname}`;
+//     }
+
+//     getFullName(){
+//         return `Fullname: ` + this.fullName ? this.fullName : this.name;
+//     }
+
+//     setAge(){
+//         if(this.yearOfBirth){
+//             this.age = new Date().getFullYear() - this.yearOfBirth;
+//         }
+//     }
+
+//     getCountryName(){
+//         return this.country ? this.country : `Ukraine`;
+//     }
+
+//     getCountry(){
+//         return `Country: ${this.getCountryName()}`;
+//     }
+
+//     getInfo(){
+//         let info = [this.getCountry(), this.getFullName()];
+//         return info.join(`. `);
+//     }
+// }
+
+// let someChild = new Child(); // {}.constructor()
+// let girl = new Child({name: `Yana`}); // {}.constructor(`Yana`)
+// Yana = new Child(Yana);
+
+// console.log(someChild);
+// console.log(girl);
+// console.log(Yana);
+
+// console.log(girl.getCountry());
+// console.log(someChild.getCountry());
+// console.log(Yana.getCountry());
+
+// OOP
+
+// const BEARS_FOOD = [
+//     {
+//         species: `Brown Bear`,
+//         food: `🥩`
+//     },
+//     {
+//         species: `Giant panda Bear`,
+//         food: `🌱`
+//     }
+// ]
+
+// const animals = [
+//     {
+//         name: `bear`,
+//         icon: `🐻`,
+//         species: `Brown Bear`
+//     },
+//     {
+//         name: `bear`,
+//         icon: `🐼`,
+//         species: `Giant panda Bear`
+//     }
+// ];
+
+// class Bear{
+//     constructor(obj){
+//         Object.assign(this, obj);
+//     }
+
+//     getIcon(){
+//         return `Icon: ${this.icon}`;
+//     }
+
+//     getFood(species){
+//         let bearFood = BEARS_FOOD.find(bear => bear.species === species); // {}, undefined
+//         return bearFood ? bearFood.food : ``;
+//     }
+
+//     getInfo(){
+//         let info = [];
+
+//         this.food = this.getFood(this.species);
+
+//         for(let key in this){
+//             info.push(`${key}: ${this[key]}`);
+//         }
+
+//         console.log(info);
+
+//         return info.join(`. `);
+//     }
+// }
+
+// class Panda extends Bear{
+//     constructor(bear){
+//         super(bear);
+//     }
+
+//     getIcon(){
+//         let bearIcon = super.getIcon(); // `Icon: 🐼`;
+//         let info = [bearIcon, this.superPanda()]; // [`Icon: 🐼`, `I'm super Panda`];
+
+//         return info.join(`! `) + `!`;
+//     }
+
+//     superPanda(){
+//         return `I'm super Panda`;
+//     }
+// }
+
+// let bears = animals
+//     .map(bear => bear.species === `Giant panda Bear` ? new Panda(bear) : new Bear(bear));
+
+// console.log(bears);
+
+// bears
+//     .forEach(bear => console.log(bear.getInfo()) );
+
+// bears
+//     .forEach(bear => console.log(bear.getIcon()));
+
+// super
+
+const cars = [
     {
-        name: `rabbit`,
-        icon: `🐰`
+        type: `BMW`,
+        series: `X`,
+        number: 8
     },
     {
-        name: `hamster`,
-        icon: `🐹`
+        type: `BMW`,
+        series: `X`,
+        number: 5
     },
     {
-        name: `chick`,
-        icon: `🐥`
+        type: `Audi`,
+        series: `A`,
+        number: 3
+    },
+    {
+        type: `Audi`,
+        series: `A`,
+        number: 5
+    },
+    {
+        type: `Tesla`,
+        series: `A`,
+        number: 3
     }
 ];
 
-const BEARS_SPECIES = [
-    {
-        species: `Brown Bear`,
-        latin: `Ursus arctos`
-    },
-    {
-        species: `Asiatic Black Bear`,
-        latin: `Ursus thibetanus`
-    },
-    {
-        species: `Sloth Bear`,
-        latin: `Melursus ursinus`
-    },
-    {
-        species: `Giant panda Bear`,
-        latin: `Ailuropoda melanoleuca`
-    }
-];
-
-const CROCODILE_SPECIES = [
-    {
-        species: `Nile crocodile`,
-        scientific: `Crocodylus niloticus`
-    },
-    {
-        species: `Saltwater crocodile`,
-        scientific: `Crocodylus porosus`
-    },
-    {
-        species: `Dwarf crocodile`,
-        scientific: `Osteolaemus tetraspis`
-    },
-    {
-        species: `Cuban crocodile`,
-        scientific: `Crocodylus rhombifer`
-    }
-];
-
-const predators = [
-    {
-        name: `bear`,
-        icon: `🐻`,
-        species: `Brown Bear`
-    },
-    {
-        name: `bear`,
-        icon: `🐼`,
-        species: `Giant panda Bear`
-    },
-    {
-        name: `lion`,
-        icon: `🦁`
-    },
-    {
-        name: `crocodile`,
-        icon: `🐊`,
-        species: `Nile crocodile`
-    }
-];
-
-String.prototype.toCapitalCase = function(){
-    return this[0].toUpperCase() + this.slice(1).toLowerCase();
-}
-
-class Animal{
-    constructor(animal){
-        Object.assign(this, animal);
-    }
-
-    getInfo(){
-        return Object.keys(this)
-            .map(key => `${key.toCapitalCase()}: ${this[key]}`)
-    }
-
-    renderInfo(){
-        document.write(`<ul>
-            ${
-                this.getInfo()
-                    .map(li => `<li>${li}</li>`)
-                    .join(``)
-            }
-        </ul>`);
+class Car{
+    constructor(obj){
+        Object.assign(this, obj);
     }
 }
 
-class Predator extends Animal{
-    constructor(animal){
-        super(animal);
-
-        this.type = `predator`;
+class BMW extends Car{
+    constructor(obj){
+        super(obj);
     }
 }
 
-class Herbivores extends Animal{
-    constructor(animal){
-        super(animal);
-
-        this.type = `herbivores`;
-    }
-
-    getInfo(){
-        return Object.keys(this)
-            .map(key => `${key.toCapitalCase()}: ${this[key]}`)
-            .map(str => str += `!`)
+class Audi extends Car{
+    constructor(obj){
+        super(obj);
     }
 }
 
-class Bear extends Predator{
-    constructor(animal){
-        super(animal);
-
-        this.name += ` (lat. ${this.getLatin(this.species)})`;
-    }
-
-    getLatin(species){
-        return BEARS_SPECIES.find(item => item.species === species).latin;
+class Tesla extends Car{
+    constructor(obj){
+        super(obj);
     }
 }
 
-class Crocodile extends Predator{
-    constructor(animal){
-        super(animal);
-
-        this.name += ` (scientific. ${this.getScientific(this.species)})`;
-    }
-
-    getScientific(species){
-        return CROCODILE_SPECIES.find(item => item.species === species).scientific;
-    }
+const CARS_TYPES = {
+    BMW: car => new BMW(car),
+    Audi: function(car){ return new Audi(car) },
+    Tesla: car => new Tesla(car)
 }
 
-const ANIMALS_NAMES = {
-    bear: animal => new Bear(animal),
-    crocodile: animal => new Crocodile(animal)
-}
+let carsClass = cars
+    .map(car => {
+        return CARS_TYPES[car.type] ? CARS_TYPES[car.type](car) : new Car(car);
+        // return CARS_TYPES[`BMW`] ? CARS_TYPES[`BMW`](car) : new Car(car);
+    });
 
-predators
-    .map(animal => {
-        return ANIMALS_NAMES[animal.name] ? ANIMALS_NAMES[animal.name](animal) : new Predator(animal);
-    })
-    .forEach(animal => animal.renderInfo());
+console.log(carsClass);
 
-herbivores
-    .map(animal => {
-        return ANIMALS_NAMES[animal.name] ? ANIMALS_NAMES[animal.name](animal) : new Herbivores(animal);
-    })
-    .forEach(animal => animal.renderInfo());
-
+// get/set
 
 // SOLID
-
-//       Plane
-
-// Airliner   Aerobatic
-
-// Boeing737   Extra330
-
-// The Boeing 737 has a maximum crosswind component of 35 knots if the runway is perfectly dry, or 15 knots if the runway is wet.
-// The Boeing 737: 108 to 215 passengers.
-
-// Extra 330 has a maximum crosswind component of 14 knots if the runway is perfectly dry, or 12 knots if the runway is wet.
-
-const CROSSWIND = 13;
-const RUNAWAY = `dry`;
-
-const planes = [
-    {
-        name: `Boeing 737`,
-        type: `Airliner`,
-        crosswind: {
-            dry: 35,
-            wet: 15
-        },
-        passengers: {
-            min: 108,
-            max: 215,
-            current: 110
-        }
-    },
-    {
-        name: `Airbus 300`,
-        type: `Airliner`,
-        crosswind: {
-            dry: 35,
-            wet: 15
-        },
-        passengers: {
-            min: 100,
-            max: 215,
-            current: 100
-        }
-    },
-    {
-        name: `Extra 330`,
-        type: `Aerobatic`,
-        crosswind: {
-            dry: 14,
-            wet: 12
-        }
-    }
-];
-
-class Plane{
-    constructor(plane){
-        Object.assign(this, plane);
-    }
-
-    takeoff(){
-        let approveParams = this.approvedParams();
-        let approved = approveParams.every(param => param === true);
-
-        return `Takeoff for ${this.name} is ${approved ? `approved` : `not approved`}`;
-    }
-
-    approvedParams(){
-        return [this.weatherParam()];
-    }
-
-    weatherParam(){
-        let approve = true;
-
-        switch(RUNAWAY){
-            case `dry`:
-                if(CROSSWIND>this.crosswind.dry) 
-                    approve = false;
-                    break;
-            case `wet`:
-                if(CROSSWIND>this.crosswind.wet) 
-                    approve = false;
-                    break;
-        }
-
-        return approve;
-    }
-}
-
-class Airliner extends Plane{
-    constructor(plane){
-        super(plane);
-    }
-
-    passangerParam(){
-        return this.passengers.current < this.passengers.min ? false : true;
-    }
-
-    approvedParams(){
-        let params = super.approvedParams();
-        params.push(this.passangerParam());
-
-        return params;
-    }
-
-}
-
-class Aerobatic extends Plane{
-    constructor(plane){
-        super(plane);
-    }
-}
-
-const PLANES_CLASSES = {
-    Airliner: plane => new Airliner(plane),
-    Aerobatic: plane => new Aerobatic(plane)
-}
-
-planes
-    .map(plane => PLANES_CLASSES[plane.type] ? PLANES_CLASSES[plane.type](plane) : new Plane(plane))
-    .map(plane => {
-        console.log(plane);
-        return plane;
-    })
-    .forEach(plane => console.log(plane.takeoff()));
