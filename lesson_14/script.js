@@ -90,9 +90,9 @@
 //         Object.assign(this, obj);
 //     }
 
-//     getIcon(){
-//         return `Icon: ${this.icon}`;
-//     }
+    // getIcon(){
+    //     return `Icon: ${this.icon}`;
+    // }
 
 //     getFood(species){
 //         let bearFood = BEARS_FOOD.find(bear => bear.species === species); // {}, undefined

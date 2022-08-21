@@ -160,3 +160,43 @@ herbivores
         return ANIMALS_NAMES[animal.name] ? ANIMALS_NAMES[animal.name](animal) : new Herbivores(animal);
     })
     .forEach(animal => animal.renderInfo());
+
+class User{
+    constructor(user){
+        Object.assign(this, user);
+    }
+
+    render(){
+        return `<div class="user">
+            ...
+            ${this.courses ? this.renderCourses() : ``}
+        </div>`
+    }
+
+    renderCourses(){
+        return `<div class="user__courses">...</div>`
+    }
+}
+
+class Admin extends User{
+    constructor(user){
+        super(user);
+    }
+
+    renderCourses(){
+        return `<div class="user__courses admin--info">...</div>`
+    }
+}
+
+const ROLES = {
+    student: user => new Student(user),
+    admin: user => new Admin(user),
+    lector: user => new Lector(user),
+}
+
+let render = users
+    .map(user => ROLES[user.role] ? ROLES[user.role](user) : new User(user))
+    .map(user => user.render())
+    .join(``);
+
+document.write(`<div class="users">${render}</div>`);
