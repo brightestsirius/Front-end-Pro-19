@@ -5,9 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 17</title>
-    <script src="script.js"></script>
+    <style>
+        .second{
+            text-decoration: underline;
+        }
+
+        .third{
+            color: green;
+        }
+
+        h1[name="product"]{
+            font-style: italic;
+        }
+
+        p[data-sale="true"]{
+            color: green;
+        }
+
+        .blue{
+            background: blue;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <!-- <h1 id="heading_1" class="first second">Hello, world!</h1>
+    <h1 id="heading_1" class="first second">Hello, world!</h1>
+    <h1 id="heading_1" class="first second" name="sale">Hello, world!</h1> -->
+
+    <!-- <p id="product_1" class="product" data-exist="true">Hello</p> -->
+
+    <ul>
+        <li class="green">item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>
+            <ul>
+                <li class="green">inner item 1</li>
+                <li>
+                    <ul>
+                        <li class="green">inner inner item 1</li>
+                        <li>inner inner item 2</li>
+                        <li class="red">
+                            <ul>
+                                <li class="green red">inner inner inner item 1</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="red">inner item 2</li>
+            </ul>
+        </li>
+        <li>item 5</li>
+        <li>item 6</li>
+        <li>item 7</li>
+        <li>item 8</li>
+        <li>item 9</li>
+        <li class="red">item 10</li>
+    </ul>
+
+    <script src="script.js"></script>
 </body>
 </html>
