@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 20</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- <label>
+        Name: <input id="userName" type="text" placeholder="Enter name" value="hello">
+    </label>
+
+    <label>
+        <textarea id="userMessage" cols="30" rows="10">
+            Yours message
+        </textarea>
+    </label> -->
+
+    <!-- <fieldset>
+        <label>
+            Red: <input name="t-shirt" type="checkbox" value="Red" checked>
+        </label>
+        <label>
+            Green: <input name="t-shirt" type="checkbox" value="Green">
+        </label>
+        <label>
+            Yellow: <input name="t-shirt" type="checkbox" value="Yellow" checked>
+        </label>
+    </fieldset> -->
+
+    <!-- <fieldset>
+        <label>
+            Red: <input name="t-shirt" type="radio" value="Red">
+        </label>
+        <label>
+            Green: <input name="t-shirt" type="radio" value="Green" checked>
+        </label>
+        <label>
+            Yellow: <input name="t-shirt" type="radio" value="Yellow">
+        </label>
+    </fieldset> -->
+
+    <!-- <input type="color" id="colorPicker"> -->
+
+    <!-- <select id="country" multiple>
+        <option value="Ukraine">Ukraine</option>
+        <option value="Poland">Poland</option>
+        <option value="Germany" selected>Germany</option>
+    </select> -->
+
+    <!-- <button id="btn">Go to BadSite</button> -->
+    <!-- <button data-href="https://badsite.com" data-link class="link">Go to BadSite</button> -->
+    
+    <!-- T-Shirt -->
+
+    <form id="TShirtForm">
+        <fieldset>
+            <legend>Email</legend>
+            <input type="email" id="TShirtEmail" value="hello@gmail.com">
+        </fieldset>
+
+        <fieldset>
+            <legend>Promo-code</legend>
+            <input type="number" id="TShirtPromoCode" value="123" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Color</legend>
+            <label>
+                Yellow <input type="checkbox" value="Yellow" name="TShirtColor" checked>
+            </label>
+            <label>
+                Blue <input type="checkbox" value="Blue" name="TShirtColor" checked>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Size</legend>
+            <label>
+                S <input type="radio" value="S" name="TShirtSize" checked>
+            </label>
+            <label>
+                L <input type="radio" value="L" name="TShirtSize">
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Variant</legend>
+            <select id="TShirtVariant">
+                <option value="A">A</option>
+                <option value="B" selected>B</option>
+                <option value="C">C</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Message</legend>
+            <textarea id="TShirtMessage" cols="30" rows="10">Enter message</textarea>
+        </fieldset>
+
+        <button type="button" id="TShirtRememder">Remember me</button>
+        <button type="reset">Reset</button>
+        <button id="TShirtSave">Save</button>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+</html>

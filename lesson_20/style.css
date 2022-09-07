@@ -1,0 +1,22 @@
+input::placeholder{
+    color: orange;
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+.link{
+    color: blue;
+    background: none;
+    padding: 0;
+    border: 0;
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+.error{
+    border-color: crimson;
+}
