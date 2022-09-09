@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar 🥵👨🏻‍💻🥳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="meetForm" class="meet__form">
+        <fieldset>
+            <legend>Create meeting</legend>
+
+            <label>
+                Title: <input type="text" id="meetTitle" value="Daily meet" required>
+            </label>
+            <label>
+                Room: 
+                <select id="meetRoom">
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                </select>
+            </label>
+            <label>
+                Day: 
+                <select id="meetDay">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                </select>
+            </label>
+            <label>
+                Hour: 
+                <select id="meetHour">
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                </select>
+            </label>
+            <label>
+                Participiants: 
+                <select id="meetParticipiants" multiple>
+                    <option value="Jack" selected>Jack</option>
+                    <option value="Tarars">Tarars</option>
+                    <option value="Volodymyr" selected>Volodymyr</option>
+                    <option value="Olena">Olena</option>
+                </select>
+            </label>
+            <button>Create meet</button>
+        </fieldset>
+    </form>
+
+    <div id="calendars"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
