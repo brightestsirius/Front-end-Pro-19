@@ -164,25 +164,25 @@ const getAnimals = animals => {
     // })
 }
 
-// const getFile = (file, cb) => {
-//     console.log(`Start getting ${file}`);
+const getFile = (file, cb) => {
+    console.log(`Start getting ${file}`);
 
-//     let xhr = new XMLHttpRequest();
-//     xhr.open(`GET`, file);
-//     xhr.send();
+    let xhr = new XMLHttpRequest();
+    xhr.open(`GET`, file);
+    xhr.send();
     
-//     xhr.addEventListener(`readystatechange`, () => {
-//         if(xhr.readyState === 4){
-//             console.log(`End getting ${file}`);
+    xhr.addEventListener(`readystatechange`, () => {
+        if(xhr.readyState === 4){
+            console.log(`End getting ${file}`);
 
-//             if(xhr.status>=200 && xhr.status<400){
-//                 cb(JSON.parse(xhr.response));
-//             }
-//         }
-//     })
-// }
+            if(xhr.status>=200 && xhr.status<400){
+                cb(JSON.parse(xhr.response));
+            }
+        }
+    })
+}
 
-// getFile(`./files/animals.json`, getAnimals);
+getFile(`./files/animals.json`, getAnimals);
 
 // animals - 1s
 
