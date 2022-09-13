@@ -38,6 +38,12 @@ const meetingFormParticipants = document.querySelector(`#meetingFormParticipants
 
 const roomsTables = document.querySelector(`#roomsTables`);
 
+const getStorageData = key => {
+    let storage = localStorage.getItem(key);
+    storage = storage ? JSON.parse(storage) : [];
+    return storage;
+}
+
 const getRooms = () => ROOMS.map(item => item.title);
 
 const renderFormRooms = () => {
@@ -92,8 +98,7 @@ meetingForm.addEventListener(`submit`, e=>{
         participants: [...meetingFormParticipants.selectedOptions].map(item => item.value)
     }
 
-    let storageMeetings = localStorage.getItem(`meetings`); // null
-    storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
+    let storageMeetings = getStorageData(`meetings`);
 
     let meetingExist = storageMeetings.find(meeting => {
         return meeting.day === newMeeting.day 
@@ -178,8 +183,7 @@ const renderMeeting = meeting => {
     let deleteBtn = document.createElement(`button`);
     deleteBtn.innerHTML = `Delete meeting`;
     deleteBtn.addEventListener(`click`, () => {
-        let storageMeetings = localStorage.getItem(`meetings`);
-        storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
+        let storageMeetings = getStorageData(`meetings`);
 
         let meetIndex = storageMeetings
             .findIndex(item => {
@@ -200,9 +204,7 @@ const renderMeeting = meeting => {
 }
 
 const renderStorageMeetings = () => {
-    let storageMeetings = localStorage.getItem(`meetings`); // null
-    storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
-
+    let storageMeetings = getStorageData(`meetings`);
     storageMeetings.forEach(meet => renderMeeting(meet));
 }
 
