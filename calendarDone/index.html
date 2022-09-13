@@ -4,53 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar 🥵👨🏻‍💻🥳</title>
+    <title>Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <form id="meetForm" class="meet__form">
-        <fieldset>
+    <form id="meetingForm">
+        <fieldset class="meeting__form">
             <legend>Create meeting</legend>
-
             <label>
-                Title: <input type="text" id="meetTitle" value="Daily meet" required>
+                Meeting title: <input type="text" id="meetingFormTitle" value="Daily meeting">
             </label>
             <label>
-                Room: 
-                <select id="meetRoom">
-                    <option value="Red">Red</option>
-                    <option value="Green">Green</option>
+                Meeting room:
+                <select id="meetingFormRoom">
+                    <!-- <option value="Red">Red</option>
+                    <option value="Green">Green</option> -->
                 </select>
             </label>
             <label>
-                Day: 
-                <select id="meetDay">
-                    <option value="Monday">Monday</option>
+                Meeting day:
+                <select id="meetingFormDay">
+                    <!-- <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
+                    <option value="Friday">Friday</option> -->
                 </select>
             </label>
             <label>
-                Hour: 
-                <select id="meetHour">
+                Meeting hour:
+                <select id="meetingFormHour">
+                    <!-- <option value="10">10:00</option>
                     <option value="11">11:00</option>
-                    <option value="12">12:00</option>
+                    <option value="12">12:00</option> -->
                 </select>
             </label>
             <label>
-                Participiants: 
-                <select id="meetParticipiants" multiple>
-                    <option value="Jack" selected>Jack</option>
-                    <option value="Tarars">Tarars</option>
-                    <option value="Volodymyr" selected>Volodymyr</option>
-                    <option value="Olena">Olena</option>
+                Meeting participiants:
+                <select id="meetingFormParticipants" multiple>
+                    <!-- <option value="Jack">Jack</option>
+                    <option value="Anna">Anna</option>
+                    <option value="Ostap">Ostap</option>
+                    <option value="Taras">Taras</option> -->
                 </select>
             </label>
-            <button>Create meet</button>
+            <button>Create meeting</button>
         </fieldset>
     </form>
 
-    <div id="calendars"></div>
+    <div id="roomsTables" class="rooms__tables"></div>
     
     <script src="script.js"></script>
 </body>

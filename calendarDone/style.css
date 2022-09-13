@@ -1,55 +1,53 @@
-.meet__form fieldset{
-    border: 1px solid black;
-    padding: 10px;
+.meeting__form{
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin-bottom: 20px;
-}
-
-.meet__form label{
-    margin-bottom: 10px;
-}
-
-.room__calendar{
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.room__calendar caption{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.room__calendar th, .room__calendar td{
     border: 1px solid black;
-    padding: 10px;
+    margin-bottom: 20px;
 }
 
-.meet{
-    background: #ffc107;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 13px;
+.meeting__form label{
+    margin-bottom: 10px;
 }
 
-.meet h3{
-    font-size: 14px;
+.rooms__tables table{
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.rooms__tables table caption{
+    font-size: 18px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.rooms__tables table th, .rooms__tables table td{
+    border: 1px solid black;
+    padding: 7px;
+}
+
+.meeting__block{
+    background: #ff9800;
+    border-radius: 7px;
+    padding: 7px;
+    font-size: 12px;
+}
+
+.meeting__block h3{
     margin: 0;
 }
 
-.meet p{
+.meeting__block p{
     margin: 0;
 }
 
-.meet button{
-    margin: 5px 0 0 0;
-    font-size: 13px;
+.meeting__block button{
+    margin-top: 3px;
     border: none;
-    padding: 3px 7px;
+    background: white;
+    color: crimson;
+    padding: 3px 10px;
     border-radius: 3px;
-    background: crimson;
-    color: white;
+    font-size: 12px;
     cursor: pointer;
 }

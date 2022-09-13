@@ -1,3 +1,5 @@
+// 🥵👨🏻‍💻🥳
+
 const ROOMS = [
     {
         title: `Green`,
@@ -14,170 +16,202 @@ const ROOMS = [
             start: 12,
             end: 19
         }
+    },
+    {
+        title: `Yellow`,
+        days: [`Tuesday`, `Friday`, `Sunday`],
+        hours: {
+            start: 10,
+            end: 17
+        }
     }
 ];
 
 const PARTICIPANTS = [`Jack`, `Taras`,`Volodymyr`,`Olena`];
 
-const meetForm = document.querySelector(`#meetForm`);
+const meetingForm = document.querySelector(`#meetingForm`);
+const meetingFormTitle = document.querySelector(`#meetingFormTitle`);
+const meetingFormRoom = document.querySelector(`#meetingFormRoom`);
+const meetingFormDay = document.querySelector(`#meetingFormDay`);
+const meetingFormHour = document.querySelector(`#meetingFormHour`);
+const meetingFormParticipants = document.querySelector(`#meetingFormParticipants`);
 
-const meetTitle = document.querySelector(`#meetTitle`);
-const meetRoom = document.querySelector(`#meetRoom`);
-const meetDay = document.querySelector(`#meetDay`);
-const meetHour = document.querySelector(`#meetHour`);
-const meetParticipiants = document.querySelector(`#meetParticipiants`);
+const roomsTables = document.querySelector(`#roomsTables`);
 
-const calendars = document.querySelector(`#calendars`);
-
+const getRooms = () => ROOMS.map(item => item.title);
 
 const renderFormRooms = () => {
-    meetRoom.innerHTML = ROOMS.map(item => `<option value="${item.title}">${item.title}</option>`).join(``);
+    meetingFormRoom.innerHTML = getRooms()
+        .map(item => `<option value="${item}">${item}</option>`)
+        .join(``);
 }
 
-const renderFormDaysByRoom = room => {
-    let roomInfo = ROOMS.find(item => item.title === room);
-    meetDay.innerHTML = roomInfo.days.map(item => `<option value="${item}">${item}</option>`).join(``);
+const getDaysForRoom = room => ROOMS.find(item => item.title === room).days;
+
+const renderFormDays = room => {
+    meetingFormDay.innerHTML = getDaysForRoom(room)
+        .map(item => `<option value="${item}">${item}</option>`)
+        .join(``);
 }
 
-const getRoomHours = hoursObj => {
-    let startHour = hoursObj.start;
-    let endHour = hoursObj.end;
+const getHoursForRoom = room => {
+    let currentRoom = ROOMS.find(item => item.title === room);
+    let startHour = currentRoom.hours.start; // 10
+    let endHour = currentRoom.hours.end; // 18
 
     let hours = [];
     for(; startHour<=endHour; startHour++) hours.push(startHour);
-
     return hours;
 }
 
-const renderFormHoursByRoom = room => {
-    let roomInfo = ROOMS.find(item => item.title === room);
-    let hours = getRoomHours(roomInfo.hours);
-
-    meetHour.innerHTML = hours.map(item => `<option value="${item}">${item}:00</option>`).join(``);
+const renderFormHours = room => {
+    meetingFormHour.innerHTML = getHoursForRoom(room)
+        .map(item => `<option value="${item}">${item}:00</option>`)
+        .join(``);
 }
 
-renderFormRooms();
-renderFormDaysByRoom(meetRoom.value);
-renderFormHoursByRoom(meetRoom.value);
+const renderPatricipants = () => {
+    meetingFormParticipants.innerHTML = PARTICIPANTS
+        .map(item => `<option value="${item}">${item}</option>`)
+        .join(``);
+}
 
-meetRoom.addEventListener(`change`, e =>{
-    renderFormDaysByRoom(e.target.value);
-    renderFormHoursByRoom(e.target.value);
-});
+meetingFormRoom.addEventListener(`change`, e => {
+    renderFormDays(e.target.value);
+    renderFormHours(e.target.value);
+})
 
-meetForm.addEventListener(`submit`, e => {
+meetingForm.addEventListener(`submit`, e=>{
     e.preventDefault();
 
-    let newMeet = {
-        title: meetTitle.value,
-        room: meetRoom.value,
-        day: meetDay.value,
-        hour: meetHour.value,
-        participiants: [...meetParticipiants.selectedOptions].map(item => item.value)
+    let newMeeting = {
+        title: meetingFormTitle.value,
+        room: meetingFormRoom.value,
+        day: meetingFormDay.value,
+        hour: meetingFormHour.value,
+        participants: [...meetingFormParticipants.selectedOptions].map(item => item.value)
     }
 
-    let storageMeetings = localStorage.getItem(`meetings`);
+    let storageMeetings = localStorage.getItem(`meetings`); // null
     storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
 
-    let meetingsDayHour = storageMeetings
-        .filter(meet => meet.day === newMeet.day && meet.hour === newMeet.hour);
-
-    let meetAlreadyExist = meetingsDayHour.find(meet => meet.room === newMeet.room);
-    if(meetAlreadyExist){
-        console.log(`🥵 Meet on ${newMeet.day} at ${newMeet.hour} in ${newMeet.room} already exist.`);
-        return;
-    }
-
-    let busyParticiapnts = [];
-    newMeet.participiants.forEach(participiant => {
-        meetingsDayHour.forEach(meet => {
-            meet.participiants.forEach(user => {
-                if(user === participiant) busyParticiapnts.push(participiant);
-            })
-        })
+    let meetingExist = storageMeetings.find(meeting => {
+        return meeting.day === newMeeting.day 
+        && meeting.hour === newMeeting.hour 
+        && meeting.room === newMeeting.room
     });
 
-    if(busyParticiapnts.length){
-        busyParticiapnts.forEach(participiant => console.log(`👨🏻‍💻 ${participiant} already has meeting at this time.`));
+    if(meetingExist){
+        console.log(`🥵 Meeting on ${newMeeting.day} at ${newMeeting.hour} on ${newMeeting.room} already exist!`);
         return;
     }
 
-    storageMeetings.push(newMeet);
-    localStorage.setItem(`meetings`, JSON.stringify(storageMeetings));
-    console.log(`🥳 Meet on ${newMeet.day} at ${newMeet.hour} in ${newMeet.room} successfully created!`);
+    const meetingsDayHour = storageMeetings
+        .filter(meet => meet.day === newMeeting.day && meet.hour === newMeeting.hour);
 
-    renderMeet(newMeet);
+    let busyParticipants = [];
+    newMeeting.participants
+        .forEach(participant => {
+            meetingsDayHour.forEach(meet => {
+                let currentParticipantBusy = meet.participants.find(user => user === participant);
+                if(currentParticipantBusy) busyParticipants.push(participant);
+            })
+        });
+
+    if(busyParticipants.length){
+        busyParticipants.forEach(item => console.log(`👨🏻‍💻 ${item} already busy on ${newMeeting.day} at ${newMeeting.hour}!`));
+        return;
+    }
+
+    storageMeetings.push(newMeeting);
+    localStorage.setItem(`meetings`, JSON.stringify(storageMeetings));
+    renderMeeting(newMeeting);
+    console.log(`🥳 Meeting on ${newMeeting.day} at ${newMeeting.hour} on ${newMeeting.room} successfully created!`)
 });
 
-const renderThead = data => {
+const renderCaption = roomTitle => `<caption>Calendar for ${roomTitle} room</caption>`;
+
+const renderThead = roomDays => {
     return `<thead>
         <tr>
             <th></th>
-            ${data.map(item => `<th>${item}</th>`).join(``)}
+            ${roomDays.map(item => `<th>${item}</th>`).join(``)}
         </tr>
     </thead>`;
 }
 
-const renderTbody = data => {
-    let TRs = getRoomHours(data.hours)
-        .map(hour => {
-            return `<tr>
-                <td>${hour}:00</td>
-                ${data.days
-                    .map(day => `<td data-hour="${hour}" data-day="${day}"></td>`)
-                    .join(``)
-                }
-            </tr>`;
-        })
+const renderTbody = room => {
+    let TRs = getHoursForRoom(room.title)
+        .map(hour => `<tr>
+            <td>${hour}:00</td>
+            ${room.days.map(day => `<td data-hour="${hour}" data-day="${day}"></td>`).join(``)}
+        </tr>`)
         .join(``);
-    
+
     return `<tbody>${TRs}</tbody>`;
 }
 
 const renderTable = room => {
-    return `<table id="room${room.title}" class="room__calendar">
-        <caption>Calendar for ${room.title} room</caption>
+    return `<table id="room${room.title}">
+        ${renderCaption(room.title)}
         ${renderThead(room.days)}
         ${renderTbody(room)}
     </table>`;
 }
 
-const renderMeet = meet => {
-    let meetBlock = document.createElement(`div`);
-    meetBlock.className = `meet`;
-    meetBlock.innerHTML = `<h3>${meet.title}</h3>
-    <p>Participants: ${meet.participiants.join(`, `)}</p>`;
+const renderRoomsTables = () => {
+    let renderedTables = ROOMS
+    .map(room => renderTable(room)) // <table>...</table>
+    .join(``);
+
+    roomsTables.innerHTML = renderedTables;
+}
+
+const renderMeeting = meeting => {
+    let td = document.querySelector(`table#room${meeting.room} td[data-day="${meeting.day}"][data-hour="${meeting.hour}"]`);
+    
+    let meetingBlock = document.createElement(`div`);
+    meetingBlock.className = `meeting__block`;
+    meetingBlock.innerHTML = `<h3>${meeting.title}</h3>
+    <p>Participants: ${meeting.participants.join(`, `)}</p>`;
 
     let deleteBtn = document.createElement(`button`);
-    deleteBtn.innerHTML = `Delete meet`;
+    deleteBtn.innerHTML = `Delete meeting`;
     deleteBtn.addEventListener(`click`, () => {
-        meetBlock.remove();
+        let storageMeetings = localStorage.getItem(`meetings`);
+        storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
 
-        let storageMeetings = JSON.parse(localStorage.getItem(`meetings`));
-        let meetIndex = storageMeetings.findIndex(item => item === meet);
-        storageMeetings.splice(meetIndex,1);
+        let meetIndex = storageMeetings
+            .findIndex(item => {
+                return item.day === meeting.day 
+                && item.hour === meeting.hour 
+                && item.room === meeting.room
+            });
 
+        storageMeetings.splice(meetIndex, 1);
         localStorage.setItem(`meetings`, JSON.stringify(storageMeetings));
-    })
 
-    meetBlock.append(deleteBtn);
+        meetingBlock.remove();
+    });
 
-    let td = document.querySelector(`#room${meet.room} td[data-hour="${meet.hour}"][data-day="${meet.day}"]`);
-    td.append(meetBlock);
+    meetingBlock.append(deleteBtn);
+
+    td.append(meetingBlock);
 }
 
-const renderMeetings = () => {
-    let storageMeetings = localStorage.getItem(`meetings`);
+const renderStorageMeetings = () => {
+    let storageMeetings = localStorage.getItem(`meetings`); // null
     storageMeetings = storageMeetings ? JSON.parse(storageMeetings) : [];
 
-    storageMeetings.forEach(meet => renderMeet(meet));
+    storageMeetings.forEach(meet => renderMeeting(meet));
 }
 
-const renderCalendars = () => {
-    return ROOMS
-        .map(room => renderTable(room))
-        .join(``);
-}
 
-calendars.innerHTML = renderCalendars();
-renderMeetings();
+renderFormRooms();
+renderFormDays(meetingFormRoom.value);
+renderFormHours(meetingFormRoom.value);
+renderPatricipants();
+
+renderRoomsTables();
+
+renderStorageMeetings();
