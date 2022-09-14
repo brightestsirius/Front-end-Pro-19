@@ -145,10 +145,12 @@ let animalsGlobal;
 const getAnimal = animal => console.log(animal);
 
 const getLion = lion => console.log(lion);
+
 const getDog = dog => {
     console.log(dog);
     getFile(`./files/${animalsGlobal[2]}.json`, getLion);
 }
+
 const getCat = cat => {
     console.log(cat);
     getFile(`./files/${animalsGlobal[1]}.json`, getDog)
