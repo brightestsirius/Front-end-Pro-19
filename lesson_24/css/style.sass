@@ -1,0 +1,66 @@
+$color__primary: #F8F8F8
+$color__secondary: #FFFFFF
+
+$radius: 10px
+
+body
+    margin: 0
+
+main
+    min-height: 100vh
+    
+.joke
+
+    &__wrapper
+        display: flex
+        justify-content: space-between
+
+    &__creation
+        padding: 40px
+
+    &__form
+        width: fit-content
+        display: flex
+        flex-direction: column
+        background: $color__primary
+        padding: 20px
+        border-radius: $radius
+        margin-bottom: 20px
+
+        > label
+            margin-bottom: 10px
+
+    &__block
+        background: $color__primary
+        padding: 20px
+        border-radius: $radius
+        margin-bottom: 10px
+
+        &--cat
+            background: $color__secondary
+            padding: 7px 10px
+            border-radius: $radius
+            width: fit-content
+            margin: 0
+
+        &--fav
+            background: none
+            border: none
+            padding: none
+            cursor: pointer
+            display: block
+            margin: 0
+
+        &--text
+            margin: 7px 0
+
+    &__favourites
+        background: $color__primary
+        padding: 40px
+
+        .joke__block
+            background: $color__secondary
+
+            &--cat
+
+                background: $color__primary

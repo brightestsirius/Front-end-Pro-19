@@ -1,0 +1,50 @@
+body {
+  margin: 0; }
+
+main {
+  min-height: 100vh; }
+
+.joke__wrapper {
+  display: flex;
+  justify-content: space-between; }
+.joke__creation {
+  padding: 40px; }
+.joke__form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  background: #F8F8F8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px; }
+  .joke__form > label {
+    margin-bottom: 10px; }
+.joke__block {
+  background: #F8F8F8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px; }
+  .joke__block--cat {
+    background: #FFFFFF;
+    padding: 7px 10px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0; }
+  .joke__block--fav {
+    background: none;
+    border: none;
+    padding: none;
+    cursor: pointer;
+    display: block;
+    margin: 0; }
+  .joke__block--text {
+    margin: 7px 0; }
+.joke__favourites {
+  background: #F8F8F8;
+  padding: 40px; }
+  .joke__favourites .joke__block {
+    background: #FFFFFF; }
+    .joke__favourites .joke__block--cat {
+      background: #F8F8F8; }
+
+/*# sourceMappingURL=style.css.map */
