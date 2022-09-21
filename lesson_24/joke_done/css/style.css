@@ -25,12 +25,17 @@ main {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 10px; }
+  .joke__block:last-of-type {
+    margin-bottom: 0; }
   .joke__block--cat {
+    display: inline-block;
     background: #FFFFFF;
     padding: 7px 10px;
     border-radius: 10px;
     width: fit-content;
-    margin: 0; }
+    margin: 0 5px 0 0; }
+    .joke__block--cat:last-of-type {
+      margin-right: 0; }
   .joke__block--fav {
     background: none;
     border: none;
