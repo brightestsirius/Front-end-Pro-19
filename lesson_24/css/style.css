@@ -8,6 +8,7 @@ main {
   display: flex;
   justify-content: space-between; }
 .joke__creation {
+  width: 50%;
   padding: 40px; }
 .joke__form {
   width: fit-content;
@@ -33,15 +34,20 @@ main {
   .joke__block--fav {
     background: none;
     border: none;
-    padding: none;
+    padding: 0;
     cursor: pointer;
     display: block;
     margin: 0; }
   .joke__block--text {
     margin: 7px 0; }
+    .joke__block--text:last-child {
+      margin-bottom: 0; }
 .joke__favourites {
   background: #F8F8F8;
-  padding: 40px; }
+  padding: 40px;
+  width: 50%; }
+  .joke__favourites h3 {
+    margin-top: 0; }
   .joke__favourites .joke__block {
     background: #FFFFFF; }
     .joke__favourites .joke__block--cat {

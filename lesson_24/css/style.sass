@@ -16,6 +16,7 @@ main
         justify-content: space-between
 
     &__creation
+        width: 50%
         padding: 40px
 
     &__form
@@ -46,7 +47,7 @@ main
         &--fav
             background: none
             border: none
-            padding: none
+            padding: 0
             cursor: pointer
             display: block
             margin: 0
@@ -54,9 +55,16 @@ main
         &--text
             margin: 7px 0
 
+            &:last-child
+                margin-bottom: 0
+
     &__favourites
         background: $color__primary
         padding: 40px
+        width: 50%
+
+        h3
+            margin-top: 0
 
         .joke__block
             background: $color__secondary
