@@ -9,7 +9,58 @@
 </head>
 <body>
 
-    <p> Hello, world</p>
+    <!-- <button id="addUser">Add user</button>
+    <button id="changeUser">Change user</button>
+    <button id="deleteUser">Delete user</button> -->
+
+    <form id="createTask">
+        <fieldset class="task__fieldset">
+            <legend>Create task</legend>
+            <label>
+                Task Title: <input type="text" id="createTaskTitle" value="Task 1">
+            </label>
+            <label>
+                Task Description: <textarea id="createTaskDescription">Some explanation</textarea>
+            </label>
+            <label>
+                Task Reporter: <select id="createTaskReporter"></select>
+            </label>
+            <label>
+                Task Assignee: <select id="createTaskAssignee"></select>
+            </label>
+            <button>Create Task</button>
+        </fieldset>
+    </form>
+
+    <table id="tasksTable" class="tasks__table">
+        <thead>
+            <tr>
+                <th>Task Title</th>
+                <th>Task Description</th>
+                <th>Task Reporter</th>
+                <th>Task Assignee</th>
+                <th>Task Status</th>
+                <th>Task Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>Task 0</td>
+                <td>Some explanation</td>
+                <td>Katya</td>
+                <td>Oleg</td>
+                <td>To Do</td>
+                <td>
+                    <button class="task__action">In progress</button>
+                    <button class="task__action">Need testing</button>
+                    <button class="task__action">Testing</button>
+                    <button class="task__action">Reopened</button>
+                    <button class="task__action" disabled>Done</button>
+                    <button class="task__action">Closed</button>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
     
     <script src="script.js"></script>
 </body>
