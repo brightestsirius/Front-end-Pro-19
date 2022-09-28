@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 26</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <form id="createTask">
+        <fieldset class="task__fieldset">
+            <legend>Create task</legend>
+            <label>
+                Task Title: <input type="text" id="createTaskTitle">
+            </label>
+            <label>
+                Task Description: <textarea id="createTaskDescription"></textarea>
+            </label>
+            <label>
+                Task Reporter: <select id="createTaskReporter"></select>
+            </label>
+            <label>
+                Task Assignee: <select id="createTaskAssignee"></select>
+            </label>
+            <button>Create Task</button>
+        </fieldset>
+    </form>
+
+    <table id="tasksTable" class="tasks__table">
+        <thead>
+            <tr>
+                <th>Task Title</th>
+                <th>Task Description</th>
+                <th>Task Reporter</th>
+                <th>Task Assignee</th>
+                <th>Task Status</th>
+                <th>Task Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lorem ipsum dolor sit amet.</td>
+                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quos suscipit est voluptatibus dolorem quibusdam, enim reiciendis. 
+                    Odit nulla esse culpa?</td>
+                <td>Katya</td>
+                <td>Oleg</td>
+                <td>Done</td>
+                <td>
+                    <button class="task__action">In progress</button>
+                    <button class="task__action">Need testing</button>
+                    <button class="task__action">Testing</button>
+                    <button class="task__action">Reopened</button>
+                    <button class="task__action">Done</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="script.js"></script>
+</body>
+</html>
