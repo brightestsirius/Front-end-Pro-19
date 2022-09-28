@@ -116,10 +116,6 @@ const changeTdStatus = (td, taskChanged) => {
 }
 // changeTdStatus
 
-// trRemove
-const trRemove = tr => tr.remove();
-// trRemove
-
 // renderTask
 const renderTask = task => {
     let tr = document.createElement(`tr`);
