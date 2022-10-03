@@ -1,0 +1,62 @@
+[
+    {
+        "color": "#2e2e2e",
+        "img": "black",
+        "title": "Solid Black"
+    },
+    {
+        "color": "#43424f",
+        "img": "midnight",
+        "title": "Midnight Silver Metallic"
+    },
+    {
+        "color": "#000000",
+        "img": "black-obs",
+        "title": "Obsidian Black Metallic"
+    },
+    {
+        "color": "#212252",
+        "img": "blue",
+        "title": "Deep Blue Metallic"
+    },
+    {
+        "color": "#a8a1a2",
+        "img": "silver",
+        "title": "Silver Metallic"
+    },
+    {
+        "color": "#ecebec",
+        "img": "white",
+        "title": "Pearl White Multi-Coat"
+    },
+    {
+        "color": "#c31030",
+        "img": "red",
+        "title": "Red Multi-Coat"
+    },
+    {
+        "color": "#f68b29",
+        "img": "very-orange",
+        "title": "Very Orange Multi-Coat"
+    },
+    {
+        "color": "#fbb841",
+        "img": "brilliant-yellow",
+        "title": "Brilliant Yellow Multi-Coat"
+    },
+    {
+        "color": "#bbcad0",
+        "img": "glacier-blue",
+        "title": "Glacier Blue Multi-Coat"
+    },
+    {
+        "color": "#1093da",
+        "img": "electric-blue",
+        "title": "Electric Blue Multi-Coat"
+    },
+    {
+        "color": "#3d7866",
+        "img": "green-lotus",
+        "title": "Green Lotus Multi-Coat"
+    }
+]
