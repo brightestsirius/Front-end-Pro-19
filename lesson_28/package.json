@@ -1,0 +1,19 @@
+{
+  "name": "lesson_28",
+  "version": "3.3.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "kotik": "git init && git status && git log -1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "gulp": "^4.0.2",
+    "jquery": "^3.6.1",
+    "node-static": "^0.7.11"
+  }
+}
