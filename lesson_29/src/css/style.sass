@@ -1,0 +1,15 @@
+@import 'variables'
+
+h1
+    color: $color__main
+
+a
+    color: $color__secondary
+
+input
+    &::placeholder
+        color: $color__main
+
+    &:focus
+        &::placeholder
+            color: $color__secondary
