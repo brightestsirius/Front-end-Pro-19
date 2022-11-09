@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import ToDo from './components/ToDo/ToDoList';
+import ToDo from './components/ToDo/ToDoListAlternativeFilter';
 
 export default function App() {
   return (
