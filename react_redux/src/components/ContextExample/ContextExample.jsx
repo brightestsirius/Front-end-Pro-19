@@ -13,6 +13,7 @@ export default function ContextExample() {
 
   return (
     <ThemeContext.Provider value={useThemeColor()}>
+      <h3>Context Example</h3>
       <Switcher />
       <ListContext.Provider value={useList()}>
         <List />

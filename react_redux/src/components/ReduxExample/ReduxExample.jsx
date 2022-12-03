@@ -9,6 +9,7 @@ import Switcher from './Switcher'
 export default function ReduxExample() {
   return (
     <Provider store={store}>
+      <h3>Redux Example</h3>
       <Switcher />
       <List />
     </Provider>
