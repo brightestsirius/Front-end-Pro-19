@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function useList() {
-  const [toDoList] = useState([
+  const [todoList] = useState([
     {
       id: 1,
       title: `Todo 1`,
@@ -19,11 +19,12 @@ export default function useList() {
     },
     {
       id: 4,
-      title: `Todo 5`,
+      title: `Todo 4`,
       isDone: false,
     },
   ]);
-  const [listStyleType] = useState(`disclosure-closed`);
 
-  return {toDoList, listStyleType};
+  const [listStyleType] = useState(`disclosure-closed`)
+
+  return { todoList, listStyleType };
 }

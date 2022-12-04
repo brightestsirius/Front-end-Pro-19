@@ -1,21 +1,21 @@
 import React from "react";
 
-import ThemeContext from './../../context/ThemeContext'
-import ListContext from './../../context/ListContext'
-
 import List from "./List";
 import Switcher from "./Switcher";
 
-import useList from './../../hooks/useList'
-import useThemeColor from './../../hooks/useThemeColor'
+import ThemeContext from '../../context/ThemeContext';
+import ListContext from './../../context/ListContext'
+
+import useTheme from "../../hooks/useTheme";
+import useList from './../../hooks/useList';
 
 export default function ContextExample() {
 
   return (
-    <ThemeContext.Provider value={useThemeColor()}>
-      <h3>Context Example</h3>
+    <ThemeContext.Provider value={useTheme()}>
       <Switcher />
-      <ListContext.Provider value={useList()}>
+      <ListContext.Provider value={useList()} >
+        <List />
         <List />
       </ListContext.Provider>
     </ThemeContext.Provider>

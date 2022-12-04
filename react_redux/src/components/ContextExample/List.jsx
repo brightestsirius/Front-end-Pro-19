@@ -5,12 +5,12 @@ import ListContext from "../../context/ListContext";
 
 export default function List() {
   const {themeColor} = useContext(ThemeContext);
-  const {toDoList, listStyleType} = useContext(ListContext);
-
+  const {todoList, listStyleType} = useContext(ListContext);
+  
   return (
     <ul style={{background: themeColor, listStyleType}}>
-      {toDoList.map((item) => (
-        <li key={item.id} style={{ color: item.isDone ? `green` : `crimson` }}>
+      {todoList.map((item) => (
+        <li key={item.id} style={{ color: item.isDone ? `green` : `red` }}>
           {item.title}
         </li>
       ))}
