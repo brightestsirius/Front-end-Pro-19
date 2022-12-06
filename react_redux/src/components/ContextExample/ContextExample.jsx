@@ -16,7 +16,6 @@ export default function ContextExample() {
       <Switcher />
       <ListContext.Provider value={useList()} >
         <List />
-        <List />
       </ListContext.Provider>
     </ThemeContext.Provider>
   );
