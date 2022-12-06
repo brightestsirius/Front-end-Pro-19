@@ -2,20 +2,16 @@ import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { setThemeColor } from "./../../store/theme/actions";
+import {setThemeColorAction} from './../../store/theme/actions'
 
 export default function Switcher() {
   const {themeColor} = useSelector((state) => state.theme);
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch(); // store.dipatch();
 
   return (
     <label>
-      Set theme color{" "}
-      <input
-        type="color"
-        defaultValue={themeColor}
-        onChange={(e) => dispatch(setThemeColor(e.target.value))}
-      />
+      Set theme color <input type="color" defaultValue={themeColor} onChange={e => dispatch(setThemeColorAction(e.target.value))} />
     </label>
   );
 }

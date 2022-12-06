@@ -1,20 +1,17 @@
-import { applyMiddleware, compose, createStore, combineReducers } from "redux";
-import reduxLogger from 'redux-logger'
-import reduxThunk from 'redux-thunk'
+import {createStore, compose, applyMiddleware, combineReducers} from 'redux'
 
-import todo from "./todo/reducer";
-import theme from "./theme/reducer";
-import filter from "./filter/reducer";
+import list from './list/reducer'
+import theme from './theme/reducer'
 
-const rootReducer = combineReducers({
-  todo,
-  theme,
-  filter,
-});
+const rootReducer = combineReducers({list, theme});
 
-const store = createStore(rootReducer);
+// {
+//     list: {todoList, listStyleType},
+//     theme: {themeColor}
+// }
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export default createStore(rootReducer, composeEnhancer(applyMiddleware(reduxLogger, reduxThunk)));
+export default createStore(rootReducer, composeEnhancer(applyMiddleware()));
 
+// const store = createStore(rootReducer);
 // export default store;

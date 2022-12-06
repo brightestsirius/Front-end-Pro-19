@@ -1,17 +1,16 @@
-import {ACTION_SET_THEME_COLOR} from './actions'
+import {ACTION_THEME_COLOR_SET} from './actions';
 
 const INITIAL_STATE = {
-  listStyleType: `disclosure-closed`,
-  themeColor: `#8bc34a`
-};
+    themeColor: `#bdc6f6`
+}
 
-const reducer = (state = INITIAL_STATE, { type, payload }) => {
-    switch(type){
-        case ACTION_SET_THEME_COLOR:
-          return {...state, themeColor: payload}
-        default:
-            return state;
-    }
-};
+const reducer = (state=INITIAL_STATE, {type, payload}) => {
+   switch(type){
+    case ACTION_THEME_COLOR_SET:
+        return {...state, themeColor: payload}
+    default:
+        return state;
+   }
+}
 
 export default reducer;
