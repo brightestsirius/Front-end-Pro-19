@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import {changeItemIsDone} from './../../store/todo/actions'
+import {changeItemIsDone, fetchTodo} from './../../store/todo/actions'
 
 import {FILTER_ALL, FILTER_DONE} from './../../constants/filter'
 
@@ -14,13 +14,17 @@ export default function List() {
   const dispatch = useDispatch();
 
   if(todoFilter !== FILTER_ALL){
-    todoList = todoList.filter(item => todoFilter === FILTER_DONE ? item.isDone : !item.isDone);
+    todoList = todoList.filter(item => todoFilter === FILTER_DONE ? item.completed : !item.completed);
   }
+
+  useEffect(()=>{
+    dispatch(fetchTodo());
+  },[])
 
   return (
     <ul style={{listStyleType, background: themeColor}}>
       {todoList.map((item) => (
-        <li style={{ color: item.isDone ? `green` : `red` }} key={item.id}>
+        <li style={{ color: item.completed ? `green` : `red` }} key={item.id}>
           {item.title} <button onClick={() => dispatch(changeItemIsDone(item.id))}>Change status</button>
         </li>
       ))}
