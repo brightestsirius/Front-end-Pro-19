@@ -1,18 +1,13 @@
-// import { combineReducers } from "redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import list from "./list/reducer";
-import filter from "./filter/reducer";
-import loader from "./loader/reducer";
 
-const rootReducer = combineReducers({ list, filter, loader });
+const rootReducer = combineReducers({ list });
 
 const store = configureStore({
-  reducer: rootReducer,
+    reducer: rootReducer
 });
-
-// const store = createStore(rootReducer);
 export default store;
 
 // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// export default createStore(rootReducer, composeEnhancer(applyMiddleware(logger, thunk)));
+// export default createStore(rootReducer, composeEnhancer(applyMiddleware(reduxThunk)));

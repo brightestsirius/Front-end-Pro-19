@@ -1,17 +1,17 @@
-const API = `https://jsonplaceholder.typicode.com/todos`;
+const API = `https://61498bf2035b3600175ba32f.mockapi.io/todo`;
 
 export const getList = () => fetch(API).then((data) => data.json());
 
-export const changeItem = (id, obj) =>
+export const updateItem = (id, obj) =>
   fetch(API + `/${id}`, {
-    method: `PATCH`,
+    method: `PUT`,
     headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify(obj),
   }).then((data) => data.json());
 
-export const removeItem = (id) =>
+export const deleteItem = (id) =>
   fetch(API + `/${id}`, { method: `DELETE` }).then((data) => data.json());
 
 export const addItem = (obj) =>

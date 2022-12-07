@@ -1,38 +1,35 @@
-import React from "react";
-
-import useForm from "../../hooks/useForm";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { createItemThunk } from "./../../store/list/reducer";
+import { fetchPostItemThunk } from "./../../store/list/actions";
 
 export default function Form() {
-  const { task, changeInput } = useForm();
-
   const dispatch = useDispatch();
 
-  const handleChange = (e) => changeInput(e.target.name, e.target.value);
-  const handleChangeCheckbox = (e) =>
-    changeInput(e.target.name, e.target.checked);
+  const [task, setTask] = useState({
+    title: ``,
+    completed: false,
+  });
+
+  const handleTitle = (e) =>
+    setTask((prevState) => ({ ...prevState, title: e.target.value }));
+  const handleCompleted = (e) =>
+    setTask((prevState) => ({ ...prevState, completed: e.target.checked }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createItemThunk(task));
+    dispatch(fetchPostItemThunk(task));
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Task title <input name="title" type="text" onBlur={handleChange} />
+        Title: <input type="text" onChange={handleTitle} />
       </label>
       <label>
-        Task completed{" "}
-        <input
-          name="completed"
-          type="checkbox"
-          onChange={handleChangeCheckbox}
-        />
+        Completed: <input type="checkbox" onChange={handleCompleted} />
       </label>
-      <button>Add</button>
+      <button>Create</button>
     </form>
   );
 }

@@ -1,69 +1,27 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {setLoading} from './../loader/actions'
-import {addItem, removeItem, changeItem, getList} from './../../services/listService'
+import {ACTION_SET_LIST, ACTION_UPDATE_ITEM, ACTION_DELETE_ITEM, ACTION_ADD_ITEM} from './actions'
 
-const initialState = {
-    list: []
+const INITIAL_STATE = {
+    todoList: []
 }
 
-export const createItemThunk = obj => {
-    return async function(dispatch){
-        dispatch(setLoading(true));
-        let addedItem = await addItem(obj);
-        dispatch(createItem(addedItem));
-        dispatch(setLoading(false));
-    }
-}
-
-export const deleteItemThunk = id => {
-    return async function(dispatch){
-        dispatch(setLoading(true));
-        await removeItem(id);
-        dispatch(deleteItem(id));
-        dispatch(setLoading(false));
-    }
-}
-
-export const changeCompletedThunk = item => {
-    return async function(dispatch){
-        dispatch(setLoading(true));
-        let itemModified = await changeItem(item.id, {completed: !item.completed});
-        dispatch(changeCompleted(itemModified));
-        dispatch(setLoading(false));
-    }
-}
-
-export const fetchListThunk = () => {
-    return async dispatch => {
-        dispatch(setLoading(true));
-        dispatch(setList(await getList()));
-        dispatch(setLoading(false));
-    }
-}
-
-export const listSlice = createSlice({
-    name: 'list',
-    initialState,
-    reducers: {
-        changeCompleted: (state, {type, payload}) => {
-            state.list = state.list.map(item => {
-                if(item.id === payload.id) item = payload;
+const reducer = (state=INITIAL_STATE, {type, payload}) => {
+    switch(type){
+        case ACTION_SET_LIST:
+            return {...state, todoList: payload}
+        case ACTION_UPDATE_ITEM:
+            return {...state, todoList: state.todoList.map(item => {
+                if(item.id === payload.id){
+                    item = payload;
+                }
                 return item;
-            })
-        },
-        setList: (state, {type, payload}) => {
-            state.list = [...payload];
-        },
-        deleteItem: (state, {type, payload}) => {
-            state.list = state.list.filter(item => item.id!==payload)
-        },
-        createItem: (state, {type, payload}) => {
-            state.list = [...state.list, payload]
-        },
-    },
-  })
-  
-  // Action creators are generated for each case reducer function
-  export const { changeCompleted, setList, deleteItem, createItem } = listSlice.actions
-  
-  export default listSlice.reducer
+            })}
+        case ACTION_DELETE_ITEM:
+            return {...state, todoList: state.todoList.filter(item => item.id !== payload)}
+        case ACTION_ADD_ITEM:
+            return {...state, todoList: [...state.todoList, payload]}
+        default:
+            return state
+    }
+}
+
+export default reducer;

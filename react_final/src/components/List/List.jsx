@@ -1,49 +1,24 @@
-import React, { useEffect } from "react";
-import InputChange from "./InputChange";
-import BtnDelete from "./BtnDelete";
-import "./style.sass";
+import React, {useEffect} from "react";
+
 import { useSelector, useDispatch } from "react-redux";
+import {fetchListThunk} from './../../store/list/actions';
 
-import { FILTER_ALL, FILTER_COMPLETED } from "./../../constants/filter";
-
-import { fetchListThunk } from "./../../store/list/reducer";
-
-import Backdrop from "@mui/material/Backdrop";
-import CircularProgress from "@mui/material/CircularProgress";
+import ListItem from './ListItem'
 
 export default function List() {
-  let { list } = useSelector((state) => state.list);
-  const { filter } = useSelector((state) => state.filter);
-  const { isLoading } = useSelector((state) => state.loader);
+  const { todoList } = useSelector((state) => state.list);
 
   const dispatch = useDispatch();
 
-  if (filter !== FILTER_ALL) {
-    list = list.filter((item) =>
-      filter === FILTER_COMPLETED ? item.completed : !item.completed
-    );
-  }
+  useEffect(()=>{
+    (async () => {
+      dispatch(fetchListThunk());
+    })()
+  }, [])
 
-  useEffect(() => {
-    dispatch(fetchListThunk());
-  }, []);
-
-  return !isLoading ? (
+  return (
     <ul>
-      {list.map((item) => (
-        <li key={item.id} className={item.completed ? `completed` : undefined}>
-          {item.title}
-          <InputChange item={item} />
-          <BtnDelete id={item.id} />
-        </li>
-      ))}
+      {todoList.map((item) => <ListItem key={item.id} item={item} />)}
     </ul>
-  ) : (
-    <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={isLoading}
-    >
-      <CircularProgress color="inherit" />
-    </Backdrop>
   );
 }
