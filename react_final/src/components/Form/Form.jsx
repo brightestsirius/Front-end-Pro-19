@@ -2,8 +2,8 @@ import React from "react";
 
 import useForm from "../../hooks/useForm";
 
-import {useDispatch} from 'react-redux'
-import {createItem} from './../../store/list/action'
+import { useDispatch } from "react-redux";
+import { createItemThunk } from "./../../store/list/reducer";
 
 export default function Form() {
   const { task, changeInput } = useForm();
@@ -11,12 +11,13 @@ export default function Form() {
   const dispatch = useDispatch();
 
   const handleChange = (e) => changeInput(e.target.name, e.target.value);
-  const handleChangeCheckbox = (e) => changeInput(e.target.name, e.target.checked);
+  const handleChangeCheckbox = (e) =>
+    changeInput(e.target.name, e.target.checked);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createItem(task));
-  }
+    dispatch(createItemThunk(task));
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -25,7 +26,11 @@ export default function Form() {
       </label>
       <label>
         Task completed{" "}
-        <input name="completed" type="checkbox" onChange={handleChangeCheckbox} />
+        <input
+          name="completed"
+          type="checkbox"
+          onChange={handleChangeCheckbox}
+        />
       </label>
       <button>Add</button>
     </form>

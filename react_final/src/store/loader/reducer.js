@@ -1,15 +1,20 @@
-import {ACTION_SET_LOADING} from './actions'
+import { createSlice } from "@reduxjs/toolkit";
 
-const INITIAL_STATE = {
-    isLoading: false
-}
+const initialState = {
+  isLoading: false,
+};
 
-const reducer = (state=INITIAL_STATE, {type, payload}) => {
-    switch(type){
-        case ACTION_SET_LOADING:
-            return {...state, isLoading: payload}
-        default:
-            return state;
-    }
-}
-export default reducer;
+export const loaderSlice = createSlice({
+  name: "loader",
+  initialState,
+  reducers: {
+    setLoading: (state, { type, payload }) => {
+      state.isLoading = payload;
+    },
+  },
+});
+
+// Action creators are generated for each case reducer function
+export const { setLoading } = loaderSlice.actions;
+
+export default loaderSlice.reducer;

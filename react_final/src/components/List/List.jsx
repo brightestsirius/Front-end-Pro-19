@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { FILTER_ALL, FILTER_COMPLETED } from "./../../constants/filter";
 
-import { fetchList } from "./../../store/list/action";
+import { fetchListThunk } from "./../../store/list/reducer";
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -25,7 +25,7 @@ export default function List() {
   }
 
   useEffect(() => {
-    dispatch(fetchList());
+    dispatch(fetchListThunk());
   }, []);
 
   return !isLoading ? (
